@@ -14,7 +14,6 @@ const {
   h2,
   h3,
   h4,
-  span,
   button,
   img,
   form,

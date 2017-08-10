@@ -31,7 +31,10 @@ function main() {
     ),
     form(
       { id: 'form' },
-      input({ id: 'input', type: 'url' }),
+      h1('Keurig Site'),
+      input({ id: 'input1', type: 'url' }),
+      h1('Amazon Site'),
+      input({ id: 'input2', type: 'url' }),
       button({ type: 'submit', id: 'button' }, 'Submit')
     )
   );
@@ -43,21 +46,37 @@ function main() {
   let $button = document.getElementById('button');
   $button.addEventListener('click', function() {
     event.preventDefault();
-    let webAddress = document.getElementById('input');
+    let webAddress1 = document.getElementById('input1');
     //console.log(webAddress.value);
-    if (webAddress.value.length > 0) {
-      coffeeObject.scrape(webAddress.value).then(responseObj => {
+    if (webAddress1.value.length > 0) {
+      coffeeObject.scrape1(webAddress1.value).then(responseObj1 => {
         const $widget = div({ class: 'coffee widget' }, [
-          img({ src: responseObj.image }),
-          h1(responseObj.brand),
-          h2(responseObj.name),
-          h3(responseObj.description),
-          h3(responseObj.boxcount, ' - ', responseObj.price),
-          h4('Customer Review: ', responseObj.review)
+          img({ src: responseObj1.image }),
+          h1(responseObj1.brand),
+          h2(responseObj1.name),
+          h3(responseObj1.description),
+          h3(responseObj1.boxcount, ' - ', responseObj1.price),
+          h4('Customer Review: ', responseObj1.review)
         ]);
         //console.log($widget);
-        const $app = $widget;
-        $root.appendChild($app);
+        const $app1 = $widget;
+        $root.appendChild($app1);
+      });
+    } else {
+      alert('Please enter a valid web address!');
+      return;
+    }
+
+    let webAddress2 = document.getElementById('input2');
+    if (webAddress2.value.length > 0) {
+      coffeeObject.scrape2(webAddress2.value).then(responseObj2 => {
+        const $pricewidget = div(
+          { class: 'price widget' },
+          h1('Amazon Price:  ', responseObj2.priceAmazon)
+        );
+        //console.log($widget);
+        const $app2 = $pricewidget;
+        $root.appendChild($app2);
       });
     } else {
       alert('Please enter a valid web address!');

@@ -7,7 +7,7 @@ class CoffeePageScraper {
   //   this.listArray;
   // }
 
-  scrape(url) {
+  scrape1(url) {
     return fetch(url).then(response => response.text()).then(html => {
       let parser = new DOMParser();
       let doc = parser.parseFromString(html, 'text/html');
@@ -40,6 +40,21 @@ class CoffeePageScraper {
       return obj;
     });
   }
-}
 
+  scrape2(url) {
+    return fetch(url).then(response => response.text()).then(html => {
+      let parser = new DOMParser();
+      let doc = parser.parseFromString(html, 'text/html');
+      this.priceAmazon = doc.getElementsByClassName(
+        'a-size-small a-color-price'
+      );
+      //console.log(this.priceAmazon.innerText);
+      let priceLength = this.priceAmazon[0].innerText.length;
+      let priceAmazonObj = {
+        priceAmazon: this.priceAmazon[0].innerText.slice(2, priceLength - 1)
+      };
+      return priceAmazonObj;
+    });
+  }
+}
 module.exports = CoffeePageScraper;

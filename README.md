@@ -1,14 +1,4 @@
-Screen Shot 2017-08-10 at 4.58.22 PM
-
-- A list of the tools/frameworks you're using and a description of what they're being used for
-- An explanation of the type of web page you're scraping to generate your widget
-- A list of future enhancements that you'd like to make if/when you have more time
-
-
-- Use the `fetch` API to make HTTP requests / AJAX calls
-- Use the `DOMParser` class to parse HTML and extract data from that HTML using DOM query methods
-- Use the `elementx` library, and functional composition, to create *all* HTML/DOM elements
-- Use CSS to style your widget and form
+![index](ScreenShot.png)
 
 
 I used the 'fetch' API to make HTTP requests and received the HTML page.  I then used the DOMParser class to parse the HTML and extract data from that HTML using DOM query methods.  All of the above were done inside the scrape function of the CoffeePageScraper class.  The data extracted from the HTML got stored in the values of an object and got exported.  The search form was created using the elementx library in the index.js file.  When the new object was instantiated and the function was called.  I used the objects returned from the function and elementx libray to construct my widgets.

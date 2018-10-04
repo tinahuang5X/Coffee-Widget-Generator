@@ -20,6 +20,6 @@
   "dependencies": {
     "elementx": "^3.1.2",
     "growl": "^1.10.5",
-    "serve": "^6.5.8"
+    "serve": "^7.0.0"
   }
 }
